@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Link from 'next/link';
 
 interface LoginState {
   email?: string;
@@ -30,9 +29,9 @@ export default function DashboardPage() {
   const [loginState] = useState<LoginState | null>(getInitialLoginState);
 
   useEffect(() => {
-    // If not logged in, redirect to login page
+    // If not logged in, redirect to login page (homepage)
     if (loginState === null) {
-      router.push('/login');
+      router.push('/');
     }
   }, [loginState, router]);
 
@@ -82,16 +81,6 @@ export default function DashboardPage() {
           >
             Logout
           </button>
-
-          {/* Back to Home Link */}
-          <div className="text-center">
-            <Link
-              href="/"
-              className="text-sm text-zinc-600 dark:text-zinc-400 hover:text-black dark:hover:text-zinc-50 transition-colors"
-            >
-              Back to home
-            </Link>
-          </div>
         </div>
       </main>
     </div>
